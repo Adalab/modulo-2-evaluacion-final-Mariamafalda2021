@@ -1,5 +1,5 @@
-.page__header {
+.form {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 3rem;
+  flex-direction: row;
+  justify-content: flex-start;
 }

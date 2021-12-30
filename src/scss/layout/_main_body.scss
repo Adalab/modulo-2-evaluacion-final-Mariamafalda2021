@@ -1,0 +1,32 @@
+body {
+  padding: 2rem;
+  height: 100vh;
+  background-color: $color-bg;
+  font-family: $font-main;
+}
+
+.main_section {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  justify-content: space-between;
+  width: 100%;
+  top: 20%;
+  left: 40px;
+  right: 80px;
+  background-color: rgba(134, 215, 235, 0.692);
+}
+
+.favourites{
+  width: 30%;
+  height: 500px;
+  border : 2px solid pink;
+ 
+}
+
+.results{
+  width: 60%;
+  height: 500px;
+  border : 2px solid blueviolet;
+
+}
