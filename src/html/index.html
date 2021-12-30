@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="icon" href="./assets/images/favicon.png" />
-  </head>
 
-  <body>
-    <div class="page">
-      <include src="./partials/header.html" title="Bienvenidos a Adalab"></include>
-      <include src="./partials/main.html"></include>
-      <include src="./partials/footer.html"></include>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buscador de series de anime</title>
+  <script src="https://kit.fontawesome.com/7879d2c79d.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+
+<body>
+  <include src="./partials/header.html" title="Buscador de series de anime"></include>
+  <main class="main">
+    <include src="./partials/search.html"></include>
+    <div class="main__wrapper">
+      <include src="./partials/favorites.html"></include>
+      <include src="./partials/results.html"></include>
     </div>
-    <script src="./assets/js/main.js"></script>
-  </body>
+  </main>
+  <script src="./assets/js/main.js"></script>
+</body>
+
 </html>
