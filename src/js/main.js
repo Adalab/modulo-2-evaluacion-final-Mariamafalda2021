@@ -4,7 +4,7 @@ let favourites = [];
 
 let seriesResult = [];
 
-let searchedSerie = 'Naruto';
+let searchedSerie = '';
 
 const apiUrl = 'https://api.jikan.moe/v3/search/anime?q=';
 
@@ -29,8 +29,8 @@ const resultsSection = document.querySelector(".js-resultsSection");
 
 const getSeriesHtmlCode = (serie) => {
     let htmlCode = `<article class= "card js-cardFavourite">`;
-    htmlCode += `<h3 class= "serie_title"> ${serie.title}</h3 >`;
     htmlCode += `<img src = "${serie.image_url}" class= "card__img" alt = "Serie: ${serie.title}">`
+    htmlCode += `<h3 class= "serie_title"> ${serie.title}</h3 >`;
     htmlCode += `</article>`;
     return htmlCode;
 
@@ -69,18 +69,26 @@ const favouriteSection = document.querySelector('.js-favouriteSection');
 function addFavouriteCard() {
     if (favourites.indexOf(this.innerHTML) === -1) {
         favourites.push(this.innerHTML);
+
     } else {
         console.log('ya está');
     }
     paintFavouriteCard();
+    addBorderTo();
 }
+
 
 function paintFavouriteCard() {
     favouriteSection.innerHTML = '<h2>Favoritos</h2>';
     for (let i = 0; i < favourites.length; i++) {
         favouriteSection.innerHTML += favourites[i];
-        favouriteSection.innerHTML += '<input type="button" value="eliminar" onclick="deleteFavourite(' + i + ')"/>';
+        favouriteSection.innerHTML += '<input class="button" type="button" value="X" onclick="deleteFavourite(' + i + ')"/>';
     }
+
+}
+
+function addBorderTo() {
+    document.querySelectorAll('.js-cardFavourite').style.border = '2px solid red';
 }
 
 //Borrar favoritos
@@ -95,7 +103,6 @@ function addListenerCard() {
     for (const listener of allListeners) {
         listener.addEventListener("click", addFavouriteCard);
     }
-
 }
 
 
@@ -108,14 +115,19 @@ function handlerResetBtn() {
     console.log('click');
     inputBox.value = '';
     resultsSection.innerHTML = '<h2>Resultados</h2>';
+
 }
 
 resetBtn.addEventListener("click", handlerResetBtn);
 
 
+//LOCAL STORAGE
 
-
-
+const setInLocalStorage = () => {
+    const stringifyFavourites = JSON.stringify(favourites);
+    localStorage.setItem('favourites', stringifyFavourites);
+};
 
 
 //EJECUTAR LA FUNCIÓN
+// getApiData(); si lo escribo aquí me da error en la consola

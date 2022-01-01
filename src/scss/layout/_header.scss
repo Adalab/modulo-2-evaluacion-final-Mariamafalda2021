@@ -1,5 +1,39 @@
+.page_title{
+  color:#E69D45;
+  margin-bottom: 15px;
+}
+
 .form {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-bottom: 50px;
+}
+
+.search_box, textarea{
+  color: white;
+  padding: 5px;
+  border: 1px solid #E69D45;
+  border-radius: 5px;
+  background-color: #455054;
+  &:focus{
+    outline:none;
+  }
+}
+::placeholder {
+  color: white;
+}
+
+.button {
+background-color: #E69D45;
+border-radius: 5px;
+border: none;
+color: #455054;
+padding: 5px;
+margin: 4px;
+&:hover {
+cursor: pointer;
+background-color: #455054;
+color: #E69D45;
+}
 }
