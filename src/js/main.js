@@ -113,7 +113,7 @@ const addFavouriteSerie = ev => {
     } else {
         console.log('esta repetido', foundFavourite);
     }
-    setInLocalStorage();
+
     paintFavouriteCard();
 };
 
@@ -134,14 +134,17 @@ const getFavouritesHtmlCode = (favourite) =>
 
 function paintFavouriteCard() {
     let favouriteCode = '';
-
-    for (const favourite of favourites) {
-        favouriteCode += getFavouritesHtmlCode(favourite);
-
+    if (favourites.length === 0) {
         favouriteSection.innerHTML = '<h2>Favoritos</h2>';
+    } else {
+        for (const favourite of favourites) {
+            favouriteCode += getFavouritesHtmlCode(favourite);
 
-        favouriteSection.innerHTML += favouriteCode;
+            favouriteSection.innerHTML = '<h2>Favoritos</h2>';
 
+            favouriteSection.innerHTML += favouriteCode;
+
+        }
     }
     addListenerRemoveBtn();
 }
@@ -153,17 +156,22 @@ function paintFavouriteCard() {
 function handleDeleteFavourite(event) {
     //Obtener el id de la serie clicada
     const clickedFavourite = event.target.dataset.id;
-    /*const deleteFavourite = clickedFavourite;*/
-    console.log(clickedFavourite);
-    console.log(favourites[2].id);
-    for (let index = 0; index < favourites.length; index++) {
-        if (clickedFavourite === favourites[index].id) {
-            favourites.splice(index, 1);
+    console.log(favourites.length);
+    if (favourites.length === 1) {
+        console.log('if length 0');
+        favourites.splice(0, 1);
+
+    } else {
+        for (let index = 0; index < favourites.length; index++) {
+            console.log(favourites[index].id)
+            if (clickedFavourite == favourites[index].id) {
+
+                favourites.splice(index, 1);
+            }
         }
     }
+
     paintFavouriteCard();
-    setInLocalStorage();
-    console.log(favourites.length);
 };
 
 function addListenerRemoveBtn() {
@@ -199,7 +207,7 @@ resetBtn.addEventListener("click", handlerResetBtn);
 
 //LOCAL STORAGE
 
-const getFromLocalStorage = () => {
+/*const getFromLocalStorage = () => {
     const localStorageFavourites = JSON.stringify('favourites');
     if (localStorageFavourites !== null) {
         favourites = JSON.parse(localStorageFavourites);
@@ -210,5 +218,5 @@ const getFromLocalStorage = () => {
 const setInLocalStorage = () => {
     const stringifyfavourites = JSON.stringify(favourites);
     localStorage.setItem('favourites', stringifyfavourites);
-}
+}*/
 
