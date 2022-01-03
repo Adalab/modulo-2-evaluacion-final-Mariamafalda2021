@@ -208,7 +208,7 @@ resetBtn.addEventListener("click", handlerResetBtn);
 
 //LOCAL STORAGE
 
-/*const getFromLocalStorage = () => {
+const getFromLocalStorage = () => {
     const localStorageFavourites = JSON.stringify('favourites');
     if (localStorageFavourites !== null) {
         favourites = JSON.parse(localStorageFavourites);
@@ -219,5 +219,5 @@ resetBtn.addEventListener("click", handlerResetBtn);
 const setInLocalStorage = () => {
     const stringifyfavourites = JSON.stringify(favourites);
     localStorage.setItem('favourites', stringifyfavourites);
-}*/
+};
 
