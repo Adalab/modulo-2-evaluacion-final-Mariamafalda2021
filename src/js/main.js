@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 
 let favourites = [];
 
@@ -27,9 +26,7 @@ const getApiData = () => {
 //PINTAMOS LOS RESULTADOS DE LA BÚSQUEDA
 
 const resultsSection = document.querySelector(".js-resultsSection");
-
-const getSeriesHtmlCode = (serie) =>
-//esta función crea el html para organizar los resultados dentro de tarjetas.
+const getSeriesHtmlCode = (serie) =>//esta función crea el html para organizar los resultados dentro de tarjetas.
 {
     let htmlCode = `<article class= "card js-cardFavourite ">`;
     htmlCode += `<img src = "${serie.image_url}" class= "card__img" alt = "Serie: ${serie.title}" data-id="${serie.mal_id}">`
@@ -111,7 +108,7 @@ const addFavouriteSerie = ev => {
     } else {
         console.log('esta repetido', foundFavourite);
     }
-
+    setInLocalStorage();
     paintFavouriteCard();
 };
 
@@ -144,7 +141,9 @@ function paintFavouriteCard() {
     }
     addListenerRemoveBtn();
 }
+/*Resaltar favorito
 
+Element.classList.add("border-favourite");*/
 
 //Borrar favoritos
 
@@ -195,9 +194,9 @@ resetBtn.addEventListener("click", handlerResetBtn);
 //LOCAL STORAGE
 
 const getFromLocalStorage = () => {
-    const localStorageFavourites = JSON.stringify('favourites');
+    const localStorageFavourites = JSON.parse(localStorage.getItem('favourites'));
     if (localStorageFavourites !== null) {
-        favourites = JSON.parse(localStorageFavourites);
+        favourites = localStorageFavourites;
         paintFavouriteCard();
     }
 };
@@ -207,3 +206,6 @@ const setInLocalStorage = () => {
     localStorage.setItem('favourites', stringifyfavourites);
 };
 
+//Ejecutar local storage
+
+getFromLocalStorage();
