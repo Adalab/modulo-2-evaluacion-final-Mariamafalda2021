@@ -50,7 +50,26 @@ const paintSeries = () => {
     resultsSection.innerHTML += seriesCode;
 }
 
+/*const paintSeries = () => {
+    let seriesCode = '';
+    let seriesCodeId = [];
+    /*const clickedSerie = parseInt(ev.target.dataset.id);
+for (const serie of seriesResult) {
+    /*if (favourites.indexOf(clickedSerie)) {
+        console.log('funciona el indexof');
+    seriesCode += getSeriesHtmlCode(serie);
+    seriesCodeId[seriesResult.indexOf(serie)] = parseInt(serie.mal_id);
 
+}
+for (const favourite of favourites) {
+    const index = seriesCodeId.findIndex((border) => border = favourite.id);
+    seriesCode[index].classList.add('border-favourite')
+}
+
+
+console.log(favourites[0].id)
+resultsSection.innerHTML += seriesCode;/
+*/
 
 
 
