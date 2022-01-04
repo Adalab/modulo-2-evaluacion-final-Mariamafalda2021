@@ -63,7 +63,6 @@ const inputBox = document.querySelector('.js-input_search');
 const searchBtn = document.querySelector('.js-button_search')
 
 function handlerSearchBtn() {
-    console.log('search');
     searchedSerie = inputBox.value;
     getApiData();
     addListenerCard();
@@ -84,9 +83,8 @@ function addListenerCard() {
 
 
 const addFavouriteSerie = ev => {
-    /*  console.log(seriesResult, parseInt(ev.target.dataset.id));*/
-    //Obtengo el id de la serie clicada
     const clickedSerie = parseInt(ev.target.dataset.id);
+
     let foundFavourite;
     for (const favourite of favourites) {
         if (favourite.id === clickedSerie) {
@@ -94,23 +92,22 @@ const addFavouriteSerie = ev => {
         }
     }
 
-
     if (foundFavourite === undefined) {
         //Busco la serie clicada
         let foundSerie;
         for (const serie of seriesResult) {
-            /*console.log(serie.mal_id);*/
+
             if (serie.mal_id === clickedSerie) {
                 foundSerie = serie;
-                /*console.log(foundSerie);*/
             }
         }
-        // Añado el producto a la columna de favoritos
+        // Añado la serie a la columna de favoritos
         favourites.push({
             id: foundSerie.mal_id,
             title: foundSerie.title,
             image_url: foundSerie.image_url,
         });
+
     } else {
         console.log('esta repetido', foundFavourite);
     }
@@ -119,9 +116,7 @@ const addFavouriteSerie = ev => {
 };
 
 
-const getFavouritesHtmlCode = (favourite) =>
-//esta función crea el html para organizar los resultados dentro de tarjetas.
-{
+const getFavouritesHtmlCode = (favourite) => {
     let htmlCodeFavourite = `<article class= "favourite-card js-cardFavourite ">`;
     htmlCodeFavourite += `<img src = "${favourite.image_url}" class= "card__img" alt = "Serie: ${favourite.title}" data-id="${favourite.id}">`
     htmlCodeFavourite += `<h3 class= "serie_title"> ${favourite.title}</h3 >`;
@@ -159,7 +154,6 @@ function handleDeleteFavourite(event) {
     const clickedFavourite = event.target.dataset.id;
     console.log(favourites.length);
     if (favourites.length === 1) {
-        console.log('if length 0');
         favourites.splice(0, 1);
 
     } else {
@@ -185,19 +179,11 @@ function addListenerRemoveBtn() {
 };
 
 
-
-function addBorderTo() {
-    document.querySelectorAll('.js-cardFavourite').style.border = '2px solid red';
-}
-
-
-
-
 //RESET
 const resetBtn = document.querySelector('.js-resetBtn')
 
-function handlerResetBtn() {
-    console.log('click');
+function handlerResetBtn(event) {
+    event.preventDefault();
     inputBox.value = '';
     resultsSection.innerHTML = '<h2>Resultados</h2>';
 
