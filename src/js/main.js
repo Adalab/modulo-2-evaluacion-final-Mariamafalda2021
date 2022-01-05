@@ -28,9 +28,10 @@ const getApiData = () => {
 const resultsSection = document.querySelector(".js-resultsSection");
 const getSeriesHtmlCode = (serie) =>//esta función crea el html para organizar los resultados dentro de tarjetas.
 {
-    let htmlCode = `<article class= "card js-cardFavourite ">`;
-    htmlCode += `<img src = "${serie.image_url}" class= "card__img" alt = "Serie: ${serie.title}" data-id="${serie.mal_id}">`
-    htmlCode += `<h3 class= "serie_title"> ${serie.title}</h3 >`;
+    let htmlCode = `<article class="card js-cardFavourite ">`;
+    htmlCode += `<p class="type">${serie.type}</p>`;
+    htmlCode += `<img src="${serie.image_url}" class= "card__img" alt = "Serie: ${serie.title}" data - id="${serie.mal_id}">`
+    htmlCode += `<h3 class= "serie_title" > ${serie.title}</h3>`;
     htmlCode += `</article>`;
 
     return htmlCode;
@@ -115,9 +116,10 @@ const addFavouriteSerie = ev => {
 
 const getFavouritesHtmlCode = (favourite) => {
     let htmlCodeFavourite = `<article class= "favourite-card js-cardFavourite ">`;
-    htmlCodeFavourite += `<img src = "${favourite.image_url}" class= "card__img" alt = "Serie: ${favourite.title}" data-id="${favourite.id}">`
-    htmlCodeFavourite += `<h3 class= "serie_title"> ${favourite.title}</h3 >`;
-    htmlCodeFavourite += `<input type="button" class="js-remove" value="X" data-id="${favourite.id}">`;
+
+    htmlCodeFavourite += `<img src ="${favourite.image_url}" class="card__img" alt ="Serie: ${favourite.title}" data - id="${favourite.id}"> `
+    htmlCodeFavourite += `<h3 class= "serie_title" > ${favourite.title}</h3> `;
+    htmlCodeFavourite += `<input type = "button" class="js-remove" value = "X" data - id="${favourite.id}">`;
     htmlCodeFavourite += `</article>`;
 
     return htmlCodeFavourite;
@@ -189,6 +191,18 @@ function handlerResetBtn(event) {
 }
 
 resetBtn.addEventListener("click", handlerResetBtn);
+
+//Log
+const logBtn = document.querySelector('.js-log');
+
+function handlerLogBtn(event) {
+    event.preventDefault();
+    for (const favourite of favourites) {
+        console.log(favourite.title);
+    }
+}
+
+logBtn.addEventListener("click", handlerLogBtn);
 
 
 //LOCAL STORAGE
